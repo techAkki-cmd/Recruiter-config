@@ -14,10 +14,17 @@ spring:
             allowedMethods: "*"
             allowedHeaders: "*"
       routes:
-        - id: recruiter-service
-          uri: lb://RECRUITER-SERVICE # Let Eureka find the port dynamically!
+        # Route 1: Authentication Endpoints
+        - id: recruiter-service-auth
+          uri: lb://RECRUITER-SERVICE 
           predicates:
-            - Path=/api/v1/auth/**, /api/v1/recruiters/**
+            - Path=/api/v1/auth/**
+
+        # Route 2: Recruiter Data Endpoints
+        - id: recruiter-service-data
+          uri: lb://RECRUITER-SERVICE 
+          predicates:
+            - Path=/api/v1/recruiters/**
 
 eureka:
   client:
