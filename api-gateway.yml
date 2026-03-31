@@ -15,7 +15,7 @@ spring:
             allowedHeaders: "*"
       routes:
         - id: recruiter-service
-          uri: lb://RECRUITER-SERVICE
+          uri: http://localhost:8081
           predicates:
             - Path=/api/v1/**
 
