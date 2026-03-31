@@ -4,6 +4,9 @@ server:
 spring:
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true   # 🔥 ADD THIS
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -16,7 +19,6 @@ spring:
           predicates:
             - Path=/api/v1/**
 
-# Tells the Gateway how to find Eureka
 eureka:
   client:
     service-url:
