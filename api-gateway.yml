@@ -25,6 +25,11 @@ spring:
           uri: lb://RECRUITER-SERVICE 
           predicates:
             - Path=/api/v1/recruiters/**
+            
+        - id: job-service
+          uri: lb://JOB-SERVICE 
+          predicates:
+            - Path=/api/v1/jobs/**     
 
 eureka:
   client:
