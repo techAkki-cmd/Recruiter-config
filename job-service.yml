@@ -23,7 +23,7 @@ spring:
         api-key: "AIzaSyA47Pw1MKroEsjEbd58Qx7mmAvZFHUYYe8"
         chat:
           options:
-            model: "gemini-1.5-flash"
+            model: "gemini-2.5-flash"
             temperature: 0.2
 
 eureka:
