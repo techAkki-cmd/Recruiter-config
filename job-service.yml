@@ -26,6 +26,12 @@ spring:
             model: "gemini-2.5-flash"
             temperature: 0.2
 
+ rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest        
+
 eureka:
   client:
     service-url:
