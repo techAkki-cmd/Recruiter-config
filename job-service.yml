@@ -40,7 +40,7 @@ cloud:
     s3:
       bucket-name: "arijit-recruiter-saas-2026" 
     credentials:
-      access-key: ${AWS_ACCESS_KEY_ID:not-set}
-      secret-key: ${AWS_SECRET_ACCESS_KEY:not-set}
+      access-key: ${AWS_ACCESS_KEY_ID}
+      secret-key: ${AWS_SECRET_ACCESS_KEY}
 
   
