@@ -23,9 +23,15 @@ eureka:
 jwt:
   secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
 
-gemini:
-  api:
-    key: "AIzaSyBGompAprNwdNISSRzNPHZhuCdnEYjoOjA"
-    url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+# ... (your existing database, eureka, and jwt config) ...
 
+spring:
+  ai:
+    googleai:
+      api-key: "AIzaSyBGompAprNwdNISSRzNPHZhuCdnEYjoOjA"
+      chat:
+        options:
+          # We force it to use the fast, cheap model perfect for text analysis
+          model: "gemini-1.5-flash" 
+          temperature: 0.2 # Keep it low so the AI is analytical, not creative
   
