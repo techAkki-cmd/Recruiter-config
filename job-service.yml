@@ -19,14 +19,11 @@ spring:
   ai:
     google:
       genai:
+        # Kept hardcoded for local development
         api-key: "AIzaSyA0ZfNZKcBzrKwOc9N8p0CxkX1IVJQeffM"
-        project-id: recruiter-saas-demo
-        location: us-central1
-        embedding:
-          project-id: recruiter-saas-demo
-          location: us-central1
-          options:
-            model: text-embedding-004
+        
+        # 🔥 CRITICAL FIX: No project-id or location fields here. 
+        # This forces Spring to use standard AI Studio instead of Vertex AI.
         chat:
           options:
             model: "gemini-2.5-flash"
