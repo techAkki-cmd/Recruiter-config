@@ -22,7 +22,7 @@ spring:
         api-key: "AIzaSyCnhzjkKSJO7Y2n56OT6BfmAhjGaDs56Kw"
         chat:
           options:
-            model: "gemini-2.0-flash"
+            model: "gemini-2.5-flash"
             temperature: 0.2
 
   rabbitmq:
