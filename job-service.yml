@@ -16,13 +16,15 @@ spring:
       hibernate:
         format_sql: true
 
+  
   ai:
     google:
-      api-key: "AIzaSyBGompAprNwdNISSRzNPHZhuCdnEYjoOjA"
-      chat:
-        options:
-          model: "gemini-1.5-flash"
-          temperature: 0.2
+      genai:                      
+        api-key: "AIzaSyBGompAprNwdNISSRzNPHZhuCdnEYjoOjA"
+        chat:
+          options:
+            model: "gemini-1.5-flash"
+            temperature: 0.2
 
 eureka:
   client:
