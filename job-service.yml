@@ -19,7 +19,7 @@ spring:
   ai:
     google:
       genai:                     
-        api-key: "AIzaSyAjR2Hzrhmg2HcXlQWNcqoMzwp5mX9yg3A"
+        api-key: "AIzaSyA0ZfNZKcBzrKwOc9N8p0CxkX1IVJQeffM"
         chat:
           options:
             model: "gemini-2.5-flash"
@@ -31,10 +31,7 @@ spring:
     username: guest
     password: guest   
     
-  amqp:
-    deserialization:
-      trust:
-        all: true  
+   
 
 eureka:
   client:
