@@ -20,6 +20,7 @@ spring:
     google:
       genai:                     
         api-key: "AIzaSyA0ZfNZKcBzrKwOc9N8p0CxkX1IVJQeffM"
+        project-id: recruiter-saas-demo
         chat:
           options:
             model: "gemini-2.5-flash"
