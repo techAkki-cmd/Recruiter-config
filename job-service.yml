@@ -36,11 +36,11 @@ jwt:
 
 cloud:
   aws:
-    region: Europe (Stockholm) eu-north-1
+    region: eu-north-1
     s3:
       bucket-name: "arijit-recruiter-saas-2026" 
     credentials:
-      access-key: ${AWS_ACCESS_KEY_ID}
-      secret-key: ${AWS_SECRET_ACCESS_KEY}
+      access-key: ${AWS_ACCESS_KEY_ID:not-set}
+      secret-key: ${AWS_SECRET_ACCESS_KEY:not-set}
 
   
