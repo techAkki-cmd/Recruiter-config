@@ -18,7 +18,8 @@ spring:
 
   
   ai:
-    google:                      
+    google:
+      genai:                     
         api-key: "AIzaSyBGompAprNwdNISSRzNPHZhuCdnEYjoOjA"
         chat:
           options:
