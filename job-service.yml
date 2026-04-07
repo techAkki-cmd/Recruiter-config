@@ -7,6 +7,7 @@ spring:
     username: root
     password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: update 
@@ -15,6 +16,14 @@ spring:
       hibernate:
         format_sql: true
 
+  ai:
+    googleai:
+      api-key: "AIzaSyBGompAprNwdNISSRzNPHZhuCdnEYjoOjA"
+      chat:
+        options:
+          model: "gemini-1.5-flash"
+          temperature: 0.2
+
 eureka:
   client:
     service-url:
@@ -22,16 +31,3 @@ eureka:
 
 jwt:
   secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-
-# ... (your existing database, eureka, and jwt config) ...
-
-spring:
-  ai:
-    googleai:
-      api-key: "AIzaSyBGompAprNwdNISSRzNPHZhuCdnEYjoOjA"
-      chat:
-        options:
-          # We force it to use the fast, cheap model perfect for text analysis
-          model: "gemini-1.5-flash" 
-          temperature: 0.2 # Keep it low so the AI is analytical, not creative
-  
