@@ -16,17 +16,16 @@ spring:
       hibernate:
         format_sql: true
 
-  
   ai:
     google:
       genai:                     
-        api-key: "AIzaSyDKtQNalPdPtjXOiGdtaCkdwuhfIrfmwPI"
+        api-key: "AIzaSyAjR2Hzrhmg2HcXlQWNcqoMzwp5mX9yg3A"
         chat:
           options:
             model: "gemini-2.5-flash"
             temperature: 0.2
 
- rabbitmq:
+  rabbitmq:
     host: localhost
     port: 5672
     username: guest
@@ -48,5 +47,3 @@ cloud:
     credentials:
       access-key: ${AWS_ACCESS_KEY_ID}
       secret-key: ${AWS_SECRET_ACCESS_KEY}
-
-  
