@@ -26,15 +26,15 @@ spring:
           predicates:
             - Path=/api/v1/recruiters/**
             
+        # Route 3: Job & Resume Endpoints
         - id: job-service
           uri: lb://JOB-SERVICE 
           predicates:
-            - Path=/api/v1/jobs/**     
-
-eureka:
+            - Path=/api/v1/jobs/** eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      # 🔥 CHANGED: Pointing to the Docker container name instead of localhost
+      defaultZone: http://discovery-server:8761/eureka/
 
 management:
   endpoints:
