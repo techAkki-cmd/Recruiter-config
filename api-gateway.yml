@@ -30,12 +30,34 @@ spring:
         - id: job-service
           uri: lb://JOB-SERVICE 
           predicates:
-            - Path=/api/v1/jobs/** 
+            - Path=/api/v1/jobs/** # 🔥 NEW Route 4: Recruiter Service Swagger Docs
+        - id: recruiter-service-swagger
+          uri: lb://RECRUITER-SERVICE
+          predicates:
+            - Path=/recruiter-service/v3/api-docs/**
+          filters:
+            - RewritePath=/recruiter-service/(?<segment>.*), /${segment}
+
+        # 🔥 NEW Route 5: Job Service Swagger Docs
+        - id: job-service-swagger
+          uri: lb://JOB-SERVICE
+          predicates:
+            - Path=/job-service/v3/api-docs/**
+          filters:
+            - RewritePath=/job-service/(?<segment>.*), /${segment}
+
+# 🔥 NEW: Swagger Aggregation Config
+springdoc:
+  swagger-ui:
+    urls:
+      - name: Recruiter Auth Service
+        url: /recruiter-service/v3/api-docs
+      - name: Job & AI Service
+        url: /job-service/v3/api-docs
 
 eureka:
   client:
     service-url:
-      # 🔥 CHANGED: Pointing to the Docker container name instead of localhost
       defaultZone: http://discovery-server:8761/eureka/
 
 management:
