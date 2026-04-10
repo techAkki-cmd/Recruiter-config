@@ -30,6 +30,11 @@ spring:
     port: 5672
     username: guest
     password: guest
+    listener:
+      simple:
+        default-requeue-rejected: false
+        concurrency: 3 # 🔥 Starts 3 worker threads at the same time
+        max-concurrency: 10 # 🔥 Scales up to 10 threads if the queue gets huge
 
 eureka:
   client:
@@ -45,5 +50,5 @@ cloud:
     s3:
       bucket-name: "arijit-recruiter-saas-2026"
     credentials:
-     access-key: ${CLOUD_AWS_CREDENTIALS_ACCESS_KEY}
-     secret-key: ${CLOUD_AWS_CREDENTIALS_SECRET_KEY}
+      access-key: ${CLOUD_AWS_CREDENTIALS_ACCESS_KEY}
+      secret-key: ${CLOUD_AWS_CREDENTIALS_SECRET_KEY}
