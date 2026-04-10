@@ -52,6 +52,7 @@ spring:
 # Swagger Aggregation Config
 springdoc:
   swagger-ui:
+    path: /docs    # 🔥 STAGE 1 IMPLEMENTED: This is your new clean URL path
     urls:
       - name: Recruiter Auth Service
         url: /recruiter-service/v3/api-docs
