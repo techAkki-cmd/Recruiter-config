@@ -10,10 +10,8 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            # 🔥 UPDATED: Added '*' for AWS testing so your browser doesn't block requests
-            allowedOrigins: 
-              - "http://localhost:5173"
-              - "*" 
+            # 🔥 THIS IS THE FIX: It MUST be allowedOriginPatterns, NOT allowedOrigins
+            allowedOriginPatterns: "*" 
             allowedMethods: "*"
             allowedHeaders: "*"
       routes:
@@ -65,7 +63,6 @@ eureka:
     service-url:
       defaultZone: http://discovery-server:8761/eureka/
 
-# 🔥 UPDATED: Explicitly exposed health for Docker wait-conditions
 management:
   endpoints:
     web:
