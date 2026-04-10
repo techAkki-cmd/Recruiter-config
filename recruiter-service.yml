@@ -1,5 +1,7 @@
 server:
   port: 8081 
+  # 🔥 THIS IS THE FIX: Forces Swagger to inherit the public AWS IP from the Gateway
+  forward-headers-strategy: framework
 
 spring:
   datasource:
