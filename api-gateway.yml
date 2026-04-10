@@ -10,7 +10,10 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://localhost:5173"
+            # 🔥 UPDATED: Added '*' for AWS testing so your browser doesn't block requests
+            allowedOrigins: 
+              - "http://localhost:5173"
+              - "*" 
             allowedMethods: "*"
             allowedHeaders: "*"
       routes:
@@ -30,7 +33,9 @@ spring:
         - id: job-service
           uri: lb://JOB-SERVICE 
           predicates:
-            - Path=/api/v1/jobs/** # 🔥 NEW Route 4: Recruiter Service Swagger Docs
+            - Path=/api/v1/jobs/**
+
+        # Route 4: Recruiter Service Swagger Docs
         - id: recruiter-service-swagger
           uri: lb://RECRUITER-SERVICE
           predicates:
@@ -38,7 +43,7 @@ spring:
           filters:
             - RewritePath=/recruiter-service/(?<segment>.*), /${segment}
 
-        # 🔥 NEW Route 5: Job Service Swagger Docs
+        # Route 5: Job Service Swagger Docs
         - id: job-service-swagger
           uri: lb://JOB-SERVICE
           predicates:
@@ -46,7 +51,7 @@ spring:
           filters:
             - RewritePath=/job-service/(?<segment>.*), /${segment}
 
-# 🔥 NEW: Swagger Aggregation Config
+# Swagger Aggregation Config
 springdoc:
   swagger-ui:
     urls:
@@ -60,11 +65,14 @@ eureka:
     service-url:
       defaultZone: http://discovery-server:8761/eureka/
 
+# 🔥 UPDATED: Explicitly exposed health for Docker wait-conditions
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: "health,gateway,info"
   endpoint:
+    health:
+      show-details: always
     gateway:
       enabled: true
