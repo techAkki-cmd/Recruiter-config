@@ -6,53 +6,18 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
+          enabled: false # 🔥 PRO-TIP: Isko ab false kar dijiye kyunki aapne custom routes bana liye hain
       globalcors:
         corsConfigurations:
           '[/**]':
-            # 🔥 THIS IS THE FIX: It MUST be allowedOriginPatterns, NOT allowedOrigins
             allowedOriginPatterns: "*" 
             allowedMethods: "*"
             allowedHeaders: "*"
-      routes:
-        # Route 1: Authentication Endpoints
-        - id: recruiter-service-auth
-          uri: lb://RECRUITER-SERVICE 
-          predicates:
-            - Path=/api/v1/auth/**
-
-        # Route 2: Recruiter Data Endpoints
-        - id: recruiter-service-data
-          uri: lb://RECRUITER-SERVICE 
-          predicates:
-            - Path=/api/v1/recruiters/**
-            
-        # Route 3: Job & Resume Endpoints
-        - id: job-service
-          uri: lb://JOB-SERVICE 
-          predicates:
-            - Path=/api/v1/jobs/**
-
-        # Route 4: Recruiter Service Swagger Docs
-        - id: recruiter-service-swagger
-          uri: lb://RECRUITER-SERVICE
-          predicates:
-            - Path=/recruiter-service/v3/api-docs/**
-          filters:
-            - RewritePath=/recruiter-service/(?<segment>.*), /${segment}
-
-        # Route 5: Job Service Swagger Docs
-        - id: job-service-swagger
-          uri: lb://JOB-SERVICE
-          predicates:
-            - Path=/job-service/v3/api-docs/**
-          filters:
-            - RewritePath=/job-service/(?<segment>.*), /${segment}
 
 # Swagger Aggregation Config
 springdoc:
   swagger-ui:
-    path: /docs    # 🔥 STAGE 1 IMPLEMENTED: This is your new clean URL path
+    path: /docs    
     urls:
       - name: Recruiter Auth Service
         url: /recruiter-service/v3/api-docs
