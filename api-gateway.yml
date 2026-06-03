@@ -39,3 +39,15 @@ management:
       show-details: always
     gateway:
       enabled: true
+
+# Circuit Breaker Configuration (Fixed Indentation)
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10 # 10 requests ko monitor karega
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50 # Agar 50% requests fail hui (5 out of 10), toh breaker OPEN ho jayega
+      waitDurationInOpenState: 10000 # 10 seconds tak service ko call nahi karega (direct fallback dega)
+  instances:
+    recruiterCircuitBreaker:
+      baseConfig: default
