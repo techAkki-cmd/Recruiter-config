@@ -1,23 +1,22 @@
 server:
-  port: 8080 
+  port: 8080
 
 spring:
   cloud:
     gateway:
       discovery:
         locator:
-          enabled: false # 🔥 PRO-TIP: Isko ab false kar dijiye kyunki aapne custom routes bana liye hain
+          enabled: false
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOriginPatterns: "*" 
+            allowedOriginPatterns: "*"
             allowedMethods: "*"
             allowedHeaders: "*"
 
-# Swagger Aggregation Config
 springdoc:
   swagger-ui:
-    path: /docs    
+    path: /docs
     urls:
       - name: Recruiter Auth Service
         url: /recruiter-service/v3/api-docs
@@ -30,25 +29,31 @@ eureka:
       defaultZone: http://discovery-server:8761/eureka/
 
 management:
+  health:
+    circuitbreakers:
+      enabled: true
+
   endpoints:
     web:
       exposure:
         include: "health,gateway,info"
+
   endpoint:
     health:
       show-details: always
     gateway:
       enabled: true
 
-# Circuit Breaker Configuration (Fixed Indentation)
-resilience4j.circuitbreaker:
-  configs:
-    default:
-      slidingWindowSize: 10 # 10 requests ko monitor karega
-      minimumNumberOfCalls: 5
-      permittedNumberOfCallsInHalfOpenState: 2
-      failureRateThreshold: 50 # Agar 50% requests fail hui (5 out of 10), toh breaker OPEN ho jayega
-      waitDurationInOpenState: 10000 # 10 seconds tak service ko call nahi karega (direct fallback dega)
-  instances:
-    recruiterCircuitBreaker:
-      baseConfig: default
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 2
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+
+    instances:
+      recruiterCircuitBreaker:
+        baseConfig: default
